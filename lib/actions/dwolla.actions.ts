@@ -5,6 +5,7 @@ import { Client } from "dwolla-v2";
 const getEnvironment = (): "production" | "sandbox" => {
   const environment = process.env.DWOLLA_ENV as string;
 
+
   switch (environment) {
     case "sandbox":
       return "sandbox";
@@ -16,6 +17,10 @@ const getEnvironment = (): "production" | "sandbox" => {
       );
   }
 };
+console.log("DWOLLA_ENV:", process.env.DWOLLA_ENV);
+console.log("DWOLLA_KEY:", process.env.DWOLLA_KEY ? "Found" : "Missing");
+console.log("DWOLLA_SECRET:", process.env.DWOLLA_SECRET ? "Found" : "Missing");
+
 
 const dwollaClient = new Client({
   environment: getEnvironment(),
